@@ -110,12 +110,12 @@ def find_tag(string_to_find, s):
 # You can use the int() function to convert a string to integer
 def mission_report(s):
     report = []
-    pattern2 = r'(mission|raid)(\s\d+\s.*?)(failed|accomplished.*?\d+)'
+    pattern2 = r'(mission|raid)\s(\d+)\s.*?(failed|accomplished.*?\d+)'
     matches = re.findall(pattern2,s,re.IGNORECASE)
     if len(matches) != 0:
         for match in matches:
             temp = []
-            temp.append(int(re.search(r'\d+', match[1]).group()))
+            temp.append(int(match[1]))
             if 'failed' in match[2]:
                 temp.append('failed')
             elif 'accomplished' in match[2]:
