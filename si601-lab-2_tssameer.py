@@ -32,7 +32,7 @@ import re
 # leading_and_trailing('#$@eST!') should return False
 def leading_and_trailing(s):
     s = s.lower()
-    return bool(re.match(r'^[^A-Za-z]\w+(er|est)!*$',s))
+    return bool(re.match(r'^[^A-Za-z]\w+(er|est!*)$',s))
 
 
 
