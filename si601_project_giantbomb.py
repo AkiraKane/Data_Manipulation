@@ -34,7 +34,7 @@ def plat_results(link, platform):
         sleep(1)
     return results
 
-# ids for the platforms
+# #ids for the platforms
 # for platform in ['PC','Xbox 360', 'Xbox One', 'PlayStation 3', 'PlayStation 4']:
 #     response = urllib2.urlopen('http://www.giantbomb.com/api/platforms/?format=json&api_key=%s&format=json&field_list=name,id&filter=name:%s' % (access_token,platform))
 #     json_str = response.read()
@@ -49,7 +49,7 @@ cmn_games = list(set.intersection(*game_setl))
 print len(cmn_games)
 print cmn_games
 
-with open("cmn_games.csv","w") as op:
+with open("cmn_games2.csv","w") as op:
     out = csv.writer(op)
     for val in cmn_games:
         out.writerow([val])

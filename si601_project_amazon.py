@@ -6,6 +6,16 @@
 # AWSAccessKeyId=AKIAIJF7EL6HPGZO363Q
 # AWSSecretKey=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
 
+def convert(data):
+    if isinstance(data, basestring):
+        return data.encode('utf-8')
+    elif isinstance(data, collections.Mapping):
+        return dict(map(convert, data.iteritems()))
+    elif isinstance(data, collections.Iterable):
+        return type(data)(map(convert, data))
+    else:
+        return data
+
 from time import sleep
 from bs4 import BeautifulSoup
 import urllib2,csv
@@ -14,7 +24,7 @@ from amazonproduct import API
 api = API(locale='us')
 
 cmn_games = []
-with open('cmn_games.csv', 'r') as op:
+with open('cmn_games2.csv', 'r') as op:
     cmn_gms = csv.reader(op)
     for row in cmn_gms:
         cmn_games.extend(row)
@@ -58,11 +68,12 @@ for game in cmn_games:
         except:
             print 'lol'
 
+game_list = convert(game_list)
 print len(game_list)
 print game_list
 
 cnames = ['Title','Platform','Amzn_Title','Price','Rating','Reviews']
-cgs = open('cm_gm_dat.csv','wb')
+cgs = open('cm_gm_dat2.csv','wb')
 fp_writer = csv.DictWriter(cgs, cnames)
 fp_writer.writerows(game_list)
 
