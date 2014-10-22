@@ -49,7 +49,7 @@ cmn_games = list(set.intersection(*game_setl))
 print len(cmn_games)
 print cmn_games
 
-with open("cmn_games2.csv","w") as op:
+with open("cmn_games3.csv","w") as op:
     out = csv.writer(op)
     for val in cmn_games:
         out.writerow([val])

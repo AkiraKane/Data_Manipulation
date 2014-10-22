@@ -1,0 +1,7 @@
+graph G {
+charset=utf8;
+a -- b;
+b -- c;
+b -- d;
+c -- d;
+}
